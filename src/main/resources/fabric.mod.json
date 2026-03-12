@@ -1,0 +1,43 @@
+{
+    "schemaVersion": 1,
+    "id": "${id}",
+    "version": "${version}",
+    "name": "${name}",
+    "description": "Fuzzy autocomplete for command completions.",
+    "authors": [
+        "Doonv"
+    ],
+    "contact": {
+        "homepage": "https://stonecutter.kikugie.dev/",
+        "sources": "https://codeberg.org/stonecutter/template-fabric"
+    },
+    "license": "LGPL-3.0-or-later",
+    "icon": "assets/fuzzy-autocomplete/icon.png",
+    "environment": "*",
+    "entrypoints": {
+        "main": [
+            "doonv.fuzzy_autocomplete.FuzzyAutocomplete"
+        ],
+        "client": [
+            "doonv.fuzzy_autocomplete.FuzzyAutocompleteClient"
+        ],
+        "modmenu": [
+            "doonv.fuzzy_autocomplete.config.ModMenuIntegration"
+        ]
+    },
+    "mixins": [
+        "fuzzy-autocomplete.mixins.json",
+        {
+            "config": "fuzzy-autocomplete.client.mixins.json",
+            "environment": "client"
+        }
+    ],
+    "accessWidener": "fuzzy-autocomplete.accesswidener",
+    "depends": {
+        "fabricloader": ">=0.17",
+        "minecraft": "${minecraft}"
+    },
+    "recommends": {
+        "yet_another_config_lib_v3": "~${yacl}"
+    }
+}

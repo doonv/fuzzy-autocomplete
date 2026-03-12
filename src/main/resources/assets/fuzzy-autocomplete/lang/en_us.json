@@ -1,0 +1,12 @@
+{
+    "yacl3.config.fuzzy-autocomplete:config.category.settings": "Settings",
+    "yacl3.config.fuzzy-autocomplete:config.category.settings.group.matchedStyle": "Matched Text Style",
+    "yacl3.config.fuzzy-autocomplete:config.matchedColor": "Color",
+    "yacl3.config.fuzzy-autocomplete:config.matchedUnderline": "Underlined",
+    "yacl3.config.fuzzy-autocomplete:config.category.settings.group.unmatchedSelectedStyle": "Unmatched Selected Style",
+    "yacl3.config.fuzzy-autocomplete:config.unmatchedSelectedColor": "Color",
+    "yacl3.config.fuzzy-autocomplete:config.unmatchedSelectedUnderline": "Underlined",
+    "yacl3.config.fuzzy-autocomplete:config.category.settings.group.unmatchedUnselectedStyle": "Unmatched Unselected Style",
+    "yacl3.config.fuzzy-autocomplete:config.unmatchedUnselectedColor": "Color",
+    "yacl3.config.fuzzy-autocomplete:config.unmatchedUnselectedUnderline": "Underlined"
+}

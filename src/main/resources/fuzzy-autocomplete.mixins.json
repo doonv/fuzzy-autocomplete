@@ -1,0 +1,14 @@
+{
+    "required": true,
+    "package": "doonv.fuzzy_autocomplete.mixin",
+    "compatibilityLevel": "${java}",
+    "mixins": [
+        "BlockStateParserMixin",
+        "EntitySelectorOptionsMixin",
+        "LiteralCommandNodeMixin",
+        "SharedSuggestionProviderMixin"
+    ],
+    "injectors": {
+        "defaultRequire": 1
+    }
+}

@@ -1,0 +1,12 @@
+{
+    "required": true,
+    "package": "doonv.fuzzy_autocomplete.mixin.client",
+    "compatibilityLevel": "${java}",
+    "client": [
+        "CommandSuggestionsMixin",
+        "SuggestionsListMixin"
+    ],
+    "injectors": {
+        "defaultRequire": 1
+    }
+}

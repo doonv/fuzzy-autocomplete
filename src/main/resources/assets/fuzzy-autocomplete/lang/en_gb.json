@@ -1,0 +1,5 @@
+{
+    "yacl3.config.fuzzy-autocomplete:config.matchedColor": "Colour",
+    "yacl3.config.fuzzy-autocomplete:config.unmatchedSelectedColor": "Colour",
+    "yacl3.config.fuzzy-autocomplete:config.unmatchedUnselectedColor": "Colour"
+}
