@@ -36,9 +36,9 @@ publishMods {
     changelog = rootProject.file("CHANGELOG.md").readText()
     type = STABLE
 
-    dryRun = providers.environmentVariable("GITHUB_TOKEN").getOrNull() == null
 
     github {
+        dryRun = providers.environmentVariable("GITHUB_TOKEN").getOrNull() == null
         accessToken = providers.environmentVariable("GITHUB_TOKEN")
         repository = "doonv/fuzzy-autocomplete"
         commitish = "main" // This is the branch the release tag will be created from

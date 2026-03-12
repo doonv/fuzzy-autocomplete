@@ -129,11 +129,8 @@ publishMods {
     type = STABLE
     modLoaders.add("fabric")
 
-    dryRun = providers.environmentVariable("MODRINTH_TOKEN").getOrNull() == null ||
-            providers.environmentVariable("GITHUB_TOKEN").getOrNull() == null
-//        || providers.environmentVariable("CURSEFORGE_TOKEN").getOrNull() == null
-
     modrinth {
+        dryRun = providers.environmentVariable("MODRINTH_TOKEN").getOrNull() == null
         projectId = property("publish.modrinth") as String
         accessToken = providers.environmentVariable("MODRINTH_TOKEN")
         minecraftVersions.addAll(property("mod.mc_targets").toString().split(' '))
@@ -145,12 +142,15 @@ publishMods {
     }
 
     github {
+        dryRun = providers.environmentVariable("GITHUB_TOKEN").getOrNull() == null
         accessToken = providers.environmentVariable("GITHUB_TOKEN")
 
         parent(project(":").tasks.named("publishGithub"))
     }
 
 //    curseforge {
+//        dryRun = providers.environmentVariable("CURSEFORGE_TOKEN").getOrNull() == null
+//
 //        projectId = property("publish.curseforge") as String
 //        accessToken = providers.environmentVariable("CURSEFORGE_TOKEN")
 //        minecraftVersions.addAll(property("mod.mc_targets").toString().split(' '))
