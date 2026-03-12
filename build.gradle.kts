@@ -2,7 +2,7 @@ plugins {
     id("net.fabricmc.fabric-loom-remap")
 
     // `maven-publish`
-    // id("me.modmuss50.mod-publish-plugin")
+     id("me.modmuss50.mod-publish-plugin")
 }
 
 version = "${property("mod.version")}+${sc.current.version}"
@@ -119,7 +119,6 @@ tasks {
     }
 }
 
-/*
 // Publishes builds to Modrinth and Curseforge with changelog from the CHANGELOG.md file
 publishMods {
     file = tasks.remapJar.map { it.archiveFile.get() }
@@ -131,27 +130,29 @@ publishMods {
     modLoaders.add("fabric")
 
     dryRun = providers.environmentVariable("MODRINTH_TOKEN").getOrNull() == null
-        || providers.environmentVariable("CURSEFORGE_TOKEN").getOrNull() == null
+//        || providers.environmentVariable("CURSEFORGE_TOKEN").getOrNull() == null
 
     modrinth {
         projectId = property("publish.modrinth") as String
         accessToken = providers.environmentVariable("MODRINTH_TOKEN")
         minecraftVersions.addAll(property("mod.mc_targets").toString().split(' '))
+        projectDescription = providers.fileContents(layout.projectDirectory.file("readme.md")).asText
+
         requires {
-            slug = "fabric-api"
+            slug = "yacl"
         }
     }
 
-    curseforge {
-        projectId = property("publish.curseforge") as String
-        accessToken = providers.environmentVariable("CURSEFORGE_TOKEN")
-        minecraftVersions.addAll(property("mod.mc_targets").toString().split(' '))
-        requires {
-            slug = "fabric-api"
-        }
-    }
+//    curseforge {
+//        projectId = property("publish.curseforge") as String
+//        accessToken = providers.environmentVariable("CURSEFORGE_TOKEN")
+//        minecraftVersions.addAll(property("mod.mc_targets").toString().split(' '))
+//        requires {
+//            slug = "fabric-api"
+//        }
+//    }
 }
- */
+
 /*
 // Publishes builds to a maven repository under `com.example:template:0.1.0+mc`
 publishing {

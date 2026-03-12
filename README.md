@@ -1,8 +1,8 @@
 # Fuzzy Autocomplete
 
-A simple Minecraft mod that implements [Fuzzy Search](https://en.wikipedia.org/wiki/Approximate_string_matching) into Minecraft's command autocomplete. This allows for much greater efficiency than only being able to search with the beginning of a string.
+A simple Minecraft mod that implements [Fuzzy Search](https://en.wikipedia.org/wiki/Approximate_string_matching) into Minecraft's command autocomplete. This allows for much greater efficiency than only being able to search with the beginning of a string. 
 
-![The string "woccst" gets matched into "minecraft:waxed_oxidized_cut_copper_stairs".](./img/demo1.webp)
+![For example, the string "wwccst" gets matched into "minecraft:waxed_weathered_cut_copper_stairs".](./img/demo1.webp)
 
 The style of the autocomplete is customizable via the config menu.
 
