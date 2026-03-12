@@ -2,7 +2,7 @@ plugins {
     id("net.fabricmc.fabric-loom-remap")
 
     // `maven-publish`
-     id("me.modmuss50.mod-publish-plugin")
+    id("me.modmuss50.mod-publish-plugin")
 }
 
 version = "${property("mod.version")}+${sc.current.version}"
@@ -129,7 +129,8 @@ publishMods {
     type = STABLE
     modLoaders.add("fabric")
 
-    dryRun = providers.environmentVariable("MODRINTH_TOKEN").getOrNull() == null
+    dryRun = providers.environmentVariable("MODRINTH_TOKEN").getOrNull() == null ||
+            providers.environmentVariable("GITHUB_TOKEN").getOrNull() == null
 //        || providers.environmentVariable("CURSEFORGE_TOKEN").getOrNull() == null
 
     modrinth {
@@ -141,6 +142,12 @@ publishMods {
         requires {
             slug = "yacl"
         }
+    }
+
+    github {
+        accessToken = providers.environmentVariable("GITHUB_TOKEN")
+
+        parent(project(":").tasks.named("publishGithub"))
     }
 
 //    curseforge {

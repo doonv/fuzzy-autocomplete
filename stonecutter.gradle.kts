@@ -30,3 +30,21 @@ stonecutter parameters {
         }
     }
 }
+
+publishMods {
+    version = property("mod.version") as String
+    changelog = rootProject.file("CHANGELOG.md").readText()
+    type = STABLE
+
+    dryRun = providers.environmentVariable("GITHUB_TOKEN").getOrNull() == null
+
+    github {
+        accessToken = providers.environmentVariable("GITHUB_TOKEN")
+        repository = "doonv/fuzzy-autocomplete"
+        commitish = "main" // This is the branch the release tag will be created from
+        tagName = "${property("mod.version")}"
+
+        // Allow the release to be initially created without any files.
+        allowEmptyFiles = true
+    }
+}
