@@ -122,7 +122,9 @@ tasks {
 // Publishes builds to Modrinth and Curseforge with changelog from the CHANGELOG.md file
 publishMods {
     file = tasks.remapJar.map { it.archiveFile.get() }
-    additionalFiles.from(tasks.remapSourcesJar.map { it.archiveFile.get() })
+    additionalFiles.from(
+        tasks.remapSourcesJar.map { it.archiveFile.get() }
+    )
     displayName = "${property("mod.name")} ${property("mod.version")} for ${property("mod.mc_title")}"
     version = property("mod.version") as String
     changelog = rootProject.file("CHANGELOG.md").readText()
@@ -134,7 +136,11 @@ publishMods {
         projectId = property("publish.modrinth") as String
         accessToken = providers.environmentVariable("MODRINTH_TOKEN")
         minecraftVersions.addAll(property("mod.mc_targets").toString().split(' '))
-        projectDescription = providers.fileContents(layout.projectDirectory.file("readme.md")).asText
+        projectDescription = providers.fileContents(layout.projectDirectory.file("readme.md")).asText.toString()
+            .replace(
+                "./img/demo1.webp",
+                "https://cdn.modrinth.com/data/OXXOaUrC/images/e72a57c2f85e3b5c9768346e07af0fa4d9c54c29.webp"
+            )
 
         requires {
             slug = "yacl"
