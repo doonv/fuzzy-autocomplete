@@ -1,6 +1,6 @@
 plugins {
     id("dev.kikugie.stonecutter")
-    id("net.fabricmc.fabric-loom-remap") version "1.14-SNAPSHOT" apply false
+    id("net.fabricmc.fabric-loom-remap") version "1.15-SNAPSHOT" apply false
     id("me.modmuss50.mod-publish-plugin") version "1.0.+"
 }
 
@@ -35,7 +35,6 @@ publishMods {
     version = property("mod.version") as String
     changelog = rootProject.file("CHANGELOG.md").readText()
     type = STABLE
-
 
     github {
         dryRun = providers.environmentVariable("GITHUB_TOKEN").getOrNull() == null

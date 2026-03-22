@@ -1,0 +1,54 @@
+publish.modrinth="OXXOaUrC"
+#publish.curseforge=# Curseforge numeric mod ID
+
+[mod]
+version="1.0.0"
+group="doonv.fuzzy_autocomplete"
+id="fuzzy-autocomplete"
+name="Fuzzy Autocomplete"
+
+[deps] # Global dependencies
+fabric_loader="0.18.4"
+mixinextras="0.5.3"
+
+
+["1.20.1"]
+parchment="2023.09.03"
+
+deps.yacl="3.6.6"
+deps.modmenu="7.2.2"
+
+# Minecraft dependency for fabric.mod.json
+mod.mc_dep=">=1.20 <=1.20.1"
+# Release title for Modrinth and Curseforge
+mod.mc_title="1.20-1.20.1"
+# Space-separated compatible versions for publishing
+mod.mc_targets="1.20 1.20.1"
+
+
+["1.21.5"]
+parchment="2025.06.15"
+
+deps.yacl="3.8.2"
+deps.modmenu="14.0.1"
+
+# Minecraft dependency for fabric.mod.json
+mod.mc_dep=">=1.21 <=1.21.5"
+# Release title for Modrinth and Curseforge
+mod.mc_title="1.21-1.21.5"
+# Space-separated compatible versions for publishing
+mod.mc_targets="1.21 1.21.1 1.21.2 1.21.3 1.21.4 1.21.5"
+
+
+["1.21.11"]
+parchment="2025.12.20"
+
+deps.yacl="3.8.2"
+deps.modmenu="17.0.0-beta.2"
+
+# Minecraft dependency for fabric.mod.json
+mod.mc_dep=">=1.21.6 <=1.21.11"
+# Release title for Modrinth and Curseforge
+mod.mc_title="1.21.6-1.21.11"
+# Space-separated compatible versions for publishing
+mod.mc_targets="1.21.6 1.21.7 1.21.8 1.21.9 1.21.10 1.21.11"

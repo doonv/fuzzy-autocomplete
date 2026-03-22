@@ -9,13 +9,13 @@ pluginManagement {
 }
 
 plugins {
-    id("dev.kikugie.stonecutter") version "0.8.3"
+    id("dev.kikugie.stonecutter") version "0.9"
 }
 
 stonecutter {
     create(rootProject) {
         // See https://stonecutter.kikugie.dev/wiki/start/#choosing-minecraft-versions
-        versions("1.20.1", "1.21.5", "1.21.11")
+        versions("1.20.1", "1.21.5", "1.21.11", "26.1")
         vcsVersion = "1.21.11"
     }
 }
