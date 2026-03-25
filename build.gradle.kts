@@ -27,15 +27,10 @@ repositories {
     strictMaven("https://www.cursemaven.com", "CurseForge", "curse.maven")
     strictMaven("https://api.modrinth.com/maven", "Modrinth", "maven.modrinth")
 
-    maven("https://maven.parchmentmc.org") {
-        name = "ParchmentMC"
-    }
-    maven("https://maven.terraformersmc.com/") {
-        name = "Terraformers"
-    }
-    maven("https://maven.isxander.dev/releases") {
-        name = "Xander Maven"
-    }
+    maven("https://maven.parchmentmc.org") { name = "ParchmentMC" }
+    maven("https://maven.terraformersmc.com/") { name = "Terraformers" }
+    maven("https://maven.isxander.dev/releases") { name = "Xander Maven" }
+    maven("https://maven.nucleoid.xyz/") { name = "Nucleoid" }
 }
 
 loom {
@@ -122,8 +117,7 @@ tasks {
 publishMods {
     file = tasks.remapJar.map { it.archiveFile.get() }
     additionalFiles.from(
-        tasks.remapSourcesJar.map { it.archiveFile.get() }
-    )
+        tasks.remapSourcesJar.map { it.archiveFile.get() })
     displayName = "${property("mod.name")} ${property("mod.version")} for ${property("mod.mc_title")}"
     version = property("mod.version") as String
     changelog = rootProject.file("CHANGELOG.md").readText()

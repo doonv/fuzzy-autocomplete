@@ -22,15 +22,9 @@ repositories {
     strictMaven("https://www.cursemaven.com", "CurseForge", "curse.maven")
     strictMaven("https://api.modrinth.com/maven", "Modrinth", "maven.modrinth")
 
-    maven("https://maven.parchmentmc.org") {
-        name = "ParchmentMC"
-    }
-    maven("https://maven.terraformersmc.com/") {
-        name = "Terraformers"
-    }
-    maven("https://maven.isxander.dev/releases") {
-        name = "Xander Maven"
-    }
+    maven("https://maven.terraformersmc.com/") { name = "Terraformers" }
+    maven("https://maven.isxander.dev/releases") { name = "Xander Maven" }
+    maven("https://maven.nucleoid.xyz/") { name = "Nucleoid" }
 }
 
 loom {
