@@ -14,9 +14,16 @@ plugins {
 
 stonecutter {
     create(rootProject) {
+        fun vers(vararg versions: String) =
+            versions
+                .forEach {ver ->
+                    val string = if (eval(ver, ">=26.1")) "unobf." else ""
+                    version(ver).buildscript("build.${string}gradle.kts")
+                }
+
         // See https://stonecutter.kikugie.dev/wiki/start/#choosing-minecraft-versions
-        versions("1.20.1", "1.21.5", "1.21.11", "26.1")
-        vcsVersion = "1.21.11"
+        vers("1.20.1", "1.21.5", "1.21.11", "26.1")
+        vcsVersion = "26.1"
     }
 }
 

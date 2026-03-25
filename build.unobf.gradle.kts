@@ -1,5 +1,5 @@
 plugins {
-    id("net.fabricmc.fabric-loom-remap")
+    id("net.fabricmc.fabric-loom")
 
     // `maven-publish`
     id("me.modmuss50.mod-publish-plugin")
@@ -8,12 +8,7 @@ plugins {
 version = "${property("mod.version")}+${property("mod.mc_title")}"
 base.archivesName = property("mod.id") as String
 
-val requiredJava = when {
-    sc.current.parsed >= "1.20.5" -> JavaVersion.VERSION_21
-    sc.current.parsed >= "1.18" -> JavaVersion.VERSION_17
-    sc.current.parsed >= "1.17" -> JavaVersion.VERSION_16
-    else -> JavaVersion.VERSION_1_8
-}
+val requiredJava = JavaVersion.VERSION_25
 
 repositories {
     /**
@@ -54,6 +49,7 @@ loom {
     }
 }
 
+
 dependencies {
 //    /**
 //     * Fetches only the required Fabric API modules to not waste time downloading all of them for each version.
@@ -64,18 +60,14 @@ dependencies {
 //    }
 
     minecraft("com.mojang:minecraft:${sc.current.version}")
-    mappings(loom.layered {
-        officialMojangMappings()
-        parchment("org.parchmentmc.data:parchment-${sc.current.version}:${property("parchment")}@zip")
-    })
-    modImplementation("net.fabricmc:fabric-loader:${property("deps.fabric_loader")}")
+    implementation("net.fabricmc:fabric-loader:${property("deps.fabric_loader")}")
     implementation("io.github.llamalad7:mixinextras-fabric:${property("deps.mixinextras")}")
 
-    "modClientImplementation"("dev.isxander:yet-another-config-lib:${property("deps.yacl")}+${sc.current.version}-fabric")
-    modRuntimeOnly("maven.modrinth:yacl:${property("deps.yacl")}+${sc.current.version}-fabric")
+    "clientImplementation"("dev.isxander:yet-another-config-lib:${property("deps.yacl")}+${sc.current.version}-fabric")
+    runtimeOnly("maven.modrinth:yacl:${property("deps.yacl")}+${sc.current.version}-fabric")
 
-    "modClientImplementation"("com.terraformersmc:modmenu:${property("deps.modmenu")}")
-    modRuntimeOnly("maven.modrinth:modmenu:${property("deps.modmenu")}")
+    "clientImplementation"("com.terraformersmc:modmenu:${property("deps.modmenu")}")
+    runtimeOnly("maven.modrinth:modmenu:${property("deps.modmenu")}")
 
 
 //    fapi("fabric-lifecycle-events-v1", "fabric-resource-loader-v0", "fabric-content-registries-v0")
@@ -112,7 +104,7 @@ tasks {
     // Builds the version into a shared folder in `build/libs/${mod version}/`
     register<Copy>("buildAndCollect") {
         group = "build"
-        from(remapJar.map { it.archiveFile }, remapSourcesJar.map { it.archiveFile })
+        from(jar.map { it.archiveFile }, named<org.gradle.jvm.tasks.Jar>("sourcesJar").map { it.archiveFile })
         into(rootProject.layout.buildDirectory.file("libs/${project.property("mod.version")}"))
         dependsOn("build")
     }
@@ -120,9 +112,9 @@ tasks {
 
 // Publishes builds to Modrinth and Curseforge with changelog from the CHANGELOG.md file
 publishMods {
-    file = tasks.remapJar.map { it.archiveFile.get() }
+    file = tasks.jar.map { it.archiveFile.get() }
     additionalFiles.from(
-        tasks.remapSourcesJar.map { it.archiveFile.get() }
+        tasks.named<org.gradle.jvm.tasks.Jar>("sourcesJar").map { it.archiveFile.get() }
     )
     displayName = "${property("mod.name")} ${property("mod.version")} for ${property("mod.mc_title")}"
     version = property("mod.version") as String

@@ -32,7 +32,6 @@
             "environment": "client"
         }
     ],
-    "accessWidener": "fuzzy-autocomplete.accesswidener",
     "depends": {
         "fabricloader": ">=0.17",
         "minecraft": "${minecraft}"

@@ -1,10 +1,11 @@
 plugins {
     id("dev.kikugie.stonecutter")
     id("net.fabricmc.fabric-loom-remap") version "1.15-SNAPSHOT" apply false
+    id("net.fabricmc.fabric-loom") version "1.15-SNAPSHOT" apply false
     id("me.modmuss50.mod-publish-plugin") version "1.0.+"
 }
 
-stonecutter active "1.21.11"
+stonecutter active "26.1"
 
 // Make newer versions be published last
 stonecutter tasks {
@@ -27,6 +28,9 @@ stonecutter parameters {
             replace("ResourceLocation", "Identifier")
             // This is needed because of https://stonecutter.kikugie.dev/wiki/config/params#replacement-overlapping
             replace("ResourceLocation.fromNamespaceAndPath", "Identifier.fromNamespaceAndPath")
+        }
+        string(current.parsed >= "26.1") {
+            replace("GuiGraphics", "GuiGraphicsExtractor")
         }
     }
 }

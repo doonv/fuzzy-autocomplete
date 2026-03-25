@@ -14,7 +14,7 @@ public class FuzzyAutocomplete implements ModInitializer {
 
     public static final String VERSION = /*$ mod_version*/ "1.0.0";
 
-    public static final String MINECRAFT = /*$ minecraft*/ "1.21.11";
+    public static final String MINECRAFT = /*$ minecraft*/ "26.1";
 
     @Override
     public void onInitialize() {}

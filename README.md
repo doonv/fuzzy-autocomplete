@@ -10,7 +10,7 @@ Fuzzy Autocomplete works mostly client-side, however some matching requires Fuzz
 
 ## Supported versions
 
-Currently, the supported versions are: **1.21.x**, and **1.20.0-1.20.1**, fabric only.
+Currently, the supported versions are: **26.1**, **1.21.x**, and **1.20.0-1.20.1**, fabric only at the moment.
 I'm open to any version suggestions.
 
 As for other loaders, I might consider support for NeoForge if there's demand for it. For now, try using [Sinytra Connector](https://modrinth.com/project/u58R1TMW) with [Connector Extras](https://modrinth.com/project/FYpiwiBR).
