@@ -112,22 +112,11 @@ publishMods {
     )
     displayName = "${property("mod.name")} ${property("mod.version")} for ${property("mod.mc_title")}"
     version = property("mod.version") as String
-    changelog = rootProject.file("CHANGELOG.md").readText()
-    type = STABLE
     modLoaders.add("fabric")
 
     modrinth {
-        dryRun = providers.environmentVariable("MODRINTH_TOKEN").getOrNull() == null
         projectId = property("publish.modrinth") as String
-        accessToken = providers.environmentVariable("MODRINTH_TOKEN")
         minecraftVersions.addAll(property("mod.mc_targets").toString().split(' '))
-        projectDescription = providers.fileContents(layout.projectDirectory.file("README.md")).asText.map { s ->
-            s.replace(
-                "./img/demo1.webp",
-                "https://cdn.modrinth.com/data/OXXOaUrC/images/e72a57c2f85e3b5c9768346e07af0fa4d9c54c29.webp"
-            )
-        }
-
 
         requires {
             slug = "yacl"
@@ -135,9 +124,6 @@ publishMods {
     }
 
     github {
-        dryRun = providers.environmentVariable("GITHUB_TOKEN").getOrNull() == null
-        accessToken = providers.environmentVariable("GITHUB_TOKEN")
-
         parent(project(":").tasks.named("publishGithub"))
     }
 

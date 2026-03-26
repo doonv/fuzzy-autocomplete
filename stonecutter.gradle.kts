@@ -36,8 +36,8 @@ stonecutter parameters {
 }
 
 publishMods {
+    changelog.set(getLatestPatchNotes(rootProject.file("CHANGELOG.md")))
     version = property("mod.version") as String
-    changelog = rootProject.file("CHANGELOG.md").readText()
     type = STABLE
 
     github {
@@ -49,5 +49,36 @@ publishMods {
 
         // Allow the release to be initially created without any files.
         allowEmptyFiles = true
+    }
+}
+
+fun getLatestPatchNotes(file: File): String = file.readLines()
+    .dropWhile { !it.startsWith("## ") || it.contains("Unreleased", ignoreCase = true) }
+    .drop(1)
+    .takeWhile { !it.startsWith("## ") && !it.startsWith("[") }
+    .joinToString("\n")
+    .trim()
+
+// Global publishMods properties
+subprojects {
+    plugins.withId("me.modmuss50.mod-publish-plugin") {
+        configure<me.modmuss50.mpp.ModPublishExtension> {
+            changelog.set(getLatestPatchNotes(rootProject.file("CHANGELOG.md")))
+            type.set(STABLE)
+            modrinth {
+                dryRun.set(providers.environmentVariable("MODRINTH_TOKEN").getOrNull() == null)
+                accessToken.set(providers.environmentVariable("MODRINTH_TOKEN"))
+                projectDescription.set(providers.fileContents(layout.projectDirectory.file("README.md")).asText.map { s ->
+                    s.replace(
+                        "./img/demo1.webp",
+                        "https://cdn.modrinth.com/data/OXXOaUrC/images/e72a57c2f85e3b5c9768346e07af0fa4d9c54c29.webp"
+                    )
+                })
+            }
+            github {
+                dryRun.set(providers.environmentVariable("GITHUB_TOKEN").getOrNull() == null)
+                accessToken.set(providers.environmentVariable("GITHUB_TOKEN"))
+            }
+        }
     }
 }
