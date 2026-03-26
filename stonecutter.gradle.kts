@@ -68,12 +68,10 @@ subprojects {
             modrinth {
                 dryRun.set(providers.environmentVariable("MODRINTH_TOKEN").getOrNull() == null)
                 accessToken.set(providers.environmentVariable("MODRINTH_TOKEN"))
-                projectDescription.set(providers.fileContents(layout.projectDirectory.file("README.md")).asText.map { s ->
-                    s.replace(
-                        "./img/demo1.webp",
-                        "https://cdn.modrinth.com/data/OXXOaUrC/images/e72a57c2f85e3b5c9768346e07af0fa4d9c54c29.webp"
-                    )
-                })
+                projectDescription.set(rootProject.file("README.md").readText().replace(
+                    "./img/demo1.webp",
+                    "https://cdn.modrinth.com/data/OXXOaUrC/images/e72a57c2f85e3b5c9768346e07af0fa4d9c54c29.webp"
+                ))
             }
             github {
                 dryRun.set(providers.environmentVariable("GITHUB_TOKEN").getOrNull() == null)
