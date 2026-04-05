@@ -2,9 +2,11 @@
     "required": true,
     "package": "doonv.fuzzy_autocomplete.mixin.client",
     "compatibilityLevel": "${java}",
+    "plugin": "doonv.fuzzy_autocomplete.mixin.client.FuzzyAutocompleteMixinPlugin",
     "client": [
         "CommandSuggestionsMixin",
-        "SuggestionsListMixin"
+        "SuggestionsListMixin",
+        "compat.NbtAcCustomSuggestionMixin"
     ],
     "injectors": {
         "defaultRequire": 1
