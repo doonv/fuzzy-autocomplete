@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.1]
+
 ### Fixed
 
 - Use fuzzy matching with [NBT Autocomplete](https://github.com/mt1006/mc-nbtac-mod).
@@ -15,5 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 Initial release.
 
-[Unreleased]: https://github.com/doonv/fuzzy-autocomplete/compare/v1.0.0...HEAD
+[Unreleased]: https://github.com/doonv/fuzzy-autocomplete/compare/v1.0.1...HEAD
+[1.0.1]: https://github.com/doonv/fuzzy-autocomplete/compare/v1.0.0...v1.0.1
 [1.0.0]: https://github.com/doonv/fuzzy-autocomplete/releases/tag/1.0.0
+ 

@@ -2,7 +2,7 @@ publish.modrinth="OXXOaUrC"
 #publish.curseforge=# Curseforge numeric mod ID
 
 [mod]
-version="1.0.0"
+version="1.0.1"
 group="doonv.fuzzy_autocomplete"
 id="fuzzy-autocomplete"
 name="Fuzzy Autocomplete"
