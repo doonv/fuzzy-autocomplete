@@ -8,8 +8,9 @@
         "Doonv"
     ],
     "contact": {
-        "homepage": "https://stonecutter.kikugie.dev/",
-        "sources": "https://codeberg.org/stonecutter/template-fabric"
+        "homepage": "https://modrinth.com/project/OXXOaUrC",
+        "sources": "https://github.com/doonv/fuzzy-autocomplete",
+        "issues": "https://github.com/doonv/fuzzy-autocomplete/issues"
     },
     "license": "LGPL-3.0-or-later",
     "icon": "assets/fuzzy-autocomplete/icon.png",
