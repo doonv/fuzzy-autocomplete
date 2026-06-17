@@ -10,7 +10,7 @@ stonecutter active "26.1"
 // Make newer versions be published last
 stonecutter tasks {
     order("publishModrinth")
-//    order("publishCurseforge")
+    order("publishCurseforge")
 }
 
 // See https://stonecut/ter.kikugie.dev/wiki/config/params

@@ -134,16 +134,17 @@ publishMods {
         parent(project(":").tasks.named("publishGithub"))
     }
 
-//    curseforge {
-//        dryRun = providers.environmentVariable("CURSEFORGE_TOKEN").getOrNull() == null
-//
-//        projectId = property("publish.curseforge") as String
-//        accessToken = providers.environmentVariable("CURSEFORGE_TOKEN")
-//        minecraftVersions.addAll(property("mod.mc_targets").toString().split(' '))
-//        requires {
-//            slug = "fabric-api"
-//        }
-//    }
+    curseforge {
+        dryRun = providers.environmentVariable("CURSEFORGE_TOKEN").getOrNull() == null
+
+        projectId = property("publish.curseforge") as String
+        accessToken = providers.environmentVariable("CURSEFORGE_TOKEN")
+        minecraftVersions.addAll(property("mod.mc_targets").toString().split(' '))
+
+        requires {
+            slug = "yacl"
+        }
+    }
 }
 
 /*
