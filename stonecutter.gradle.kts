@@ -2,7 +2,7 @@ plugins {
     id("dev.kikugie.stonecutter")
     id("net.fabricmc.fabric-loom-remap") version "1.15-SNAPSHOT" apply false
     id("net.fabricmc.fabric-loom") version "1.15-SNAPSHOT" apply false
-    id("me.modmuss50.mod-publish-plugin") version "1.0.+"
+    id("me.modmuss50.mod-publish-plugin") version "2.0.+"
 }
 
 stonecutter active "26.1"

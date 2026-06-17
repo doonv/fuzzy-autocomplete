@@ -138,6 +138,9 @@ publishMods {
         projectId = property("publish.curseforge") as String
         minecraftVersions.addAll(property("mod.mc_targets").toString().split(' '))
 
+        server = true
+        client = true
+
         requires {
             slug = "yacl"
         }
