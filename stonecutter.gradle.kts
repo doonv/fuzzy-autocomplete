@@ -77,6 +77,10 @@ subprojects {
                 dryRun.set(providers.environmentVariable("GITHUB_TOKEN").getOrNull() == null)
                 accessToken.set(providers.environmentVariable("GITHUB_TOKEN"))
             }
+            curseforge {
+                dryRun.set(providers.environmentVariable("CURSEFORGE_TOKEN").getOrNull() == null)
+                accessToken.set(providers.environmentVariable("CURSEFORGE_TOKEN"))
+            }
         }
     }
 }
