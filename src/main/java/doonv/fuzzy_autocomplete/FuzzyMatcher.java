@@ -8,41 +8,51 @@ import java.util.Locale;
  */
 public class FuzzyMatcher {
     public static boolean isFuzzyMatch(String pattern, String text) {
-        pattern = pattern.toLowerCase(Locale.ROOT);
-        text = text.toLowerCase(Locale.ROOT);
+        return isFuzzyMatchLower(pattern.toLowerCase(Locale.ROOT), text.toLowerCase(Locale.ROOT));
+    }
 
-        if (pattern.isEmpty()) return true;
-        if (text.isEmpty()) return false;
+    /**
+     * Variant of {@link #isFuzzyMatch} that assumes both inputs are already lowercased,
+     * avoiding repeated {@link String#toLowerCase} calls in hot loops.
+     */
+    public static boolean isFuzzyMatchLower(String lowerPattern, String lowerText) {
+        if (lowerPattern.isEmpty()) return true;
+        if (lowerText.isEmpty()) return false;
 
         int patternIndex = 0;
-        for (int textIndex = 0; textIndex < text.length() && patternIndex < pattern.length(); textIndex++) {
-            if (pattern.charAt(patternIndex) == text.charAt(textIndex)) {
+        for (int textIndex = 0; textIndex < lowerText.length() && patternIndex < lowerPattern.length(); textIndex++) {
+            if (lowerPattern.charAt(patternIndex) == lowerText.charAt(textIndex)) {
                 patternIndex++;
             }
         }
-        return patternIndex == pattern.length();
+        return patternIndex == lowerPattern.length();
     }
 
     public static int score(String pattern, String text) {
-        pattern = pattern.toLowerCase(Locale.ROOT);
-        text = text.toLowerCase(Locale.ROOT);
+        return scoreLower(pattern.toLowerCase(Locale.ROOT), text.toLowerCase(Locale.ROOT));
+    }
 
-        if (pattern.isEmpty()) return 0;
-        if (text.equals(pattern)) return 10000;
-        if (text.startsWith(pattern)) return 5000;
-        if (text.startsWith("minecraft:" + pattern)) return 4000;
+    /**
+     * Variant of {@link #score} that assumes both inputs are already lowercased,
+     * avoiding repeated {@link String#toLowerCase} calls in hot loops.
+     */
+    public static int scoreLower(String lowerPattern, String lowerText) {
+        if (lowerPattern.isEmpty()) return 0;
+        if (lowerText.equals(lowerPattern)) return 10000;
+        if (lowerText.startsWith(lowerPattern)) return 5000;
+        if (lowerText.startsWith("minecraft:" + lowerPattern)) return 4000;
 
-        int exactMatchIndex = findBestContiguousMatch(pattern, text);
+        int exactMatchIndex = findBestContiguousMatch(lowerPattern, lowerText);
         if (exactMatchIndex >= 0) {
             int score = 3000;
-            if (exactMatchIndex == 0 || isWordBoundary(text, exactMatchIndex)) {
+            if (exactMatchIndex == 0 || isWordBoundary(lowerText, exactMatchIndex)) {
                 score += 500;
             }
-            score -= text.length();
+            score -= lowerText.length();
             return score;
         }
 
-        int[] bestMatch = findBestMatchIndices(pattern, text);
+        int[] bestMatch = findBestMatchIndices(lowerPattern, lowerText);
         if (bestMatch != null) {
             int score = 0;
             for (int i = 0; i < bestMatch.length; i++) {
@@ -50,7 +60,7 @@ public class FuzzyMatcher {
                 score += 100;
 
                 // Massive bonus for acronym-style matches
-                if (isWordBoundary(text, textIndex)) {
+                if (isWordBoundary(lowerText, textIndex)) {
                     score += 200;
                 }
 
@@ -60,7 +70,7 @@ public class FuzzyMatcher {
                 }
             }
             // Subtract text.length() so shorter matching blocks appear slightly higher
-            return score - text.length();
+            return score - lowerText.length();
         }
 
         return -1000;

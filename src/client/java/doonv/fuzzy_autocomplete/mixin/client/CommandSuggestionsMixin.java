@@ -16,8 +16,10 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 @Mixin(CommandSuggestions.class)
 public abstract class CommandSuggestionsMixin {
@@ -59,12 +61,15 @@ public abstract class CommandSuggestionsMixin {
         this.fuzzy_autocomplete$currentPattern = pattern;
 
         List<Suggestion> sortedList = new ArrayList<>(suggestions.getList());
-        String finalPattern = pattern;
-        sortedList.sort((s1, s2) -> {
-            int score1 = FuzzyMatcher.score(finalPattern, s1.getText());
-            int score2 = FuzzyMatcher.score(finalPattern, s2.getText());
-            return Integer.compare(score2, score1);
-        });
+        // pattern is already lowercased above; scoreLower avoids re-lowercasing it per suggestion.
+        // Caching scores means each suggestion is scored exactly once instead of O(n log n) times in the comparator.
+        String lowerPattern = pattern;
+        Map<String, Integer> scoreCache = new HashMap<>();
+        for (Suggestion suggestion : sortedList) {
+            scoreCache.computeIfAbsent(suggestion.getText(), text ->
+                    FuzzyMatcher.scoreLower(lowerPattern, text.toLowerCase(Locale.ROOT)));
+        }
+        sortedList.sort((s1, s2) -> Integer.compare(scoreCache.get(s2.getText()), scoreCache.get(s1.getText())));
 
         cir.setReturnValue(sortedList);
     }

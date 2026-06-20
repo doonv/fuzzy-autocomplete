@@ -49,6 +49,11 @@ loom {
     }
 }
 
+tasks.processResources {
+    // Exclude source art and platform-specific icons from the packaged jar.
+    exclude("**/*.kra", "**/icon-modrinth.png")
+}
+
 dependencies {
 //    /**
 //     * Fetches only the required Fabric API modules to not waste time downloading all of them for each version.

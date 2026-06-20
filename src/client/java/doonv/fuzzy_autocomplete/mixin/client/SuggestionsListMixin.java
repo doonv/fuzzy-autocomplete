@@ -14,6 +14,9 @@ import org.spongepowered.asm.mixin.injection.At;
 @Mixin(CommandSuggestions.SuggestionsList.class)
 public abstract class SuggestionsListMixin implements FuzzyPatternHolder {
 
+    // 0xFFFFFF00 — the yellow text color Minecraft passes for the currently selected suggestion.
+    private static final int SELECTED_COLOR = -256;
+
     @Unique
     private String fuzzy_autocomplete$pattern = "";
 
@@ -34,21 +37,21 @@ public abstract class SuggestionsListMixin implements FuzzyPatternHolder {
     //? if >= 26.1 {
     @WrapOperation(method = "extractRenderState", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/GuiGraphicsExtractor;text(Lnet/minecraft/client/gui/Font;Ljava/lang/String;III)V"))
     private void onDrawString(GuiGraphicsExtractor graphics, Font font, String text, int x, int y, int color, Operation<Void> original) {
-        boolean isSelected = (color == -256);
+        boolean isSelected = (color == SELECTED_COLOR);
 
         graphics.text(font, FuzzyHighlighter.highlightMatch(this.fuzzy_autocomplete$pattern, text, isSelected), x, y, -1);
     }
     //?} else if >=1.21.6 {
     /*@WrapOperation(method = "render", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/GuiGraphicsExtractor;drawString(Lnet/minecraft/client/gui/Font;Ljava/lang/String;III)V"))
     private void onDrawString(GuiGraphicsExtractor instance, Font font, String text, int x, int y, int color, Operation<Void> original) {
-        boolean isSelected = (color == -256);
+        boolean isSelected = (color == SELECTED_COLOR);
 
         instance.drawString(font, FuzzyHighlighter.highlightMatch(this.fuzzy_autocomplete$pattern, text, isSelected), x, y, -1);
     }
     *///?} else {
     /*@WrapOperation(method = "render", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/GuiGraphicsExtractor;drawString(Lnet/minecraft/client/gui/Font;Ljava/lang/String;III)I"))
     private int onDrawString(GuiGraphicsExtractor instance, Font font, String text, int x, int y, int color, Operation<Integer> original) {
-        boolean isSelected = (color == -256);
+        boolean isSelected = (color == SELECTED_COLOR);
 
         return instance.drawString(font, FuzzyHighlighter.highlightMatch(this.fuzzy_autocomplete$pattern, text, isSelected), x, y, -1);
     }

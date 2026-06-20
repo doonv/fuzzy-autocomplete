@@ -43,6 +43,10 @@ loom {
     }
 }
 
+tasks.processResources {
+    // Exclude source art and platform-specific icons from the packaged jar.
+    exclude("**/*.kra", "**/icon-modrinth.png")
+}
 
 dependencies {
 //    /**
