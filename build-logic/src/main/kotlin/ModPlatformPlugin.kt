@@ -188,7 +188,9 @@ abstract class ModPlatformPlugin @Inject constructor() : Plugin<Project> {
 
 	private fun Project.configureFletchingTable(ctx: Context) {
 		extensions.configure<FletchingTableExtension> {
-			mixins.create("main") { mixin("default", "${ctx.modId}.mixins.json") }
+			mixins.create("main") {
+				mixin("default", "${ctx.modId}.mixins.json")
+			}
 			j52j.register("main") { extension("json", "**/*.json5") }
 			lang.create("main") { patterns.add("assets/${ctx.modId}/lang/**") }
 		}

@@ -1,5 +1,5 @@
 //? fabric {
-package doonv.fuzzyautocomplete.mixin.compat;
+package doonv.fuzzyautocomplete.mixin.client.compat;
 
 import dev.kikugie.fletching_table.annotation.MixinEnvironment;
 import doonv.fuzzyautocomplete.FuzzyMatcher;

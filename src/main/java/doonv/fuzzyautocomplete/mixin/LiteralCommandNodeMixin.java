@@ -18,7 +18,6 @@ import java.util.concurrent.CompletableFuture;
 @MixinEnvironment(type = MixinEnvironment.Env.MAIN)
 @Mixin(value = LiteralCommandNode.class, remap = false)
 public abstract class LiteralCommandNodeMixin<S> {
-
 	@Final
 	@Shadow
 	private String literalLowerCase;

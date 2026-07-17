@@ -1,6 +1,7 @@
 @file:OptIn(dev.kikugie.stonecutter.StonecutterExperimentalAPI::class)
 
 import dev.kikugie.stonecutter.controller.StonecutterControllerExtension
+import org.gradle.kotlin.dsl.replace
 
 plugins {
 	alias(libs.plugins.stonecutter)
@@ -38,6 +39,12 @@ stonecutter parameters {
 	swaps["mod_name"] = "\"${properties.get<String>("mod.name")}\";"
 	swaps["mod_group"] = "\"${properties.get<String>("mod.group")}\";"
 	swaps["minecraft"] = "\"${current.version}\";"
+
+	replacements {
+		string(current.parsed >= "26.1") {
+			replace("GuiGraphics", "GuiGraphicsExtractor")
+		}
+	}
 }
 
 publishMods {

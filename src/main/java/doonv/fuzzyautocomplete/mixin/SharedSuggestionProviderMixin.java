@@ -11,7 +11,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @MixinEnvironment(type = MixinEnvironment.Env.MAIN)
 @Mixin(SharedSuggestionProvider.class)
 public interface SharedSuggestionProviderMixin {
-
 	/// Intercepts default dynamic resource matching to allow fuzzy matching
 	/// for registry keys, tags, player names, and custom identifiers.
 	@Inject(method = "matchesSubStr", at = @At("HEAD"), cancellable = true)

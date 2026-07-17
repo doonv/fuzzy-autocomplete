@@ -1,4 +1,4 @@
-package doonv.fuzzyautocomplete.mixin;
+package doonv.fuzzyautocomplete.mixin.client;
 
 import com.mojang.brigadier.suggestion.Suggestion;
 import com.mojang.brigadier.suggestion.Suggestions;

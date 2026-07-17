@@ -1,3 +1,5 @@
+import kotlin.text.compareTo
+
 plugins {
 	id("mod-platform")
 	id("dev.kikugie.loom-back-compat")
@@ -45,8 +47,12 @@ loom {
 
 repositories {
 	mavenCentral()
-	strictMaven("https://maven.terraformersmc.com/", "com.terraformersmc") { name = "TerraformersMC" }
+
+	// FIXME: Remove and uncomment terraformersmc maven when it's fixed.
+	strictMaven("https://maven.gnomecraft.net/releases", "com.terraformersmc") { name = "TerraformersMC" }
+//	strictMaven("https://maven.terraformersmc.com/", "com.terraformersmc") { name = "TerraformersMC" }
 	strictMaven("https://api.modrinth.com/maven", "maven.modrinth") { name = "Modrinth" }
+	strictMaven("https://maven.parchmentmc.org", "org.parchmentmc.data") { name = "ParchmentMC" }
 	// Do not make this a `strictMaven`, as 3.8.2 specifically is only on mavenCentral for some reason
 	maven(url = "https://maven.isxander.dev/releases") {
 		name = "Xander Maven"

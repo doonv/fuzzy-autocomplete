@@ -22,7 +22,6 @@ public class BlockStateParserMixin {
 			at = @At(value = "INVOKE", target = "Ljava/lang/String;startsWith(Ljava/lang/String;)Z")
 	)
 	private boolean onBlockStateStartsWith(String instance, String prefix, Operation<Boolean> original) {
-		// 'instance' is the property name (e.g. "facing"), 'prefix' is what the player typed.
 		return FuzzyMatcher.isFuzzyMatch(prefix, instance);
 	}
 }

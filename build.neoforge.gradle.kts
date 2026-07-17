@@ -6,7 +6,6 @@ plugins {
 stonecutter {
 	val (version, loader) = current.project.split('-', limit = 2)
 	properties.tags(version, loader)
-
 }
 
 platform {
@@ -20,7 +19,7 @@ platform {
 		}
 
 		/**
-		 * Equivalent of `^1.2.3` in Fabric or like any other fucking dependency system
+		 * Equivalent of `^1.2.3` in Fabric or like any other fucking normal dependency system
 		 */
 		fun carrotRangeButForge(version: String): String {
 			val parts = version.split(".")
@@ -68,6 +67,8 @@ neoForge {
 repositories {
 	mavenCentral()
 	strictMaven("https://api.modrinth.com/maven", "maven.modrinth") { name = "Modrinth" }
+	strictMaven("https://maven.parchmentmc.org", "org.parchmentmc.data") { name = "ParchmentMC" }
+
 	// Do not make this a `strictMaven`, as 3.8.2 specifically is only on mavenCentral for some reason
 	maven(url = "https://maven.isxander.dev/releases") {
 		name = "Xander Maven"

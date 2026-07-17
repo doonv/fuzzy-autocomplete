@@ -1,4 +1,11 @@
 {
+	"fuzzyautocomplete.missingDeps": {
+		"screenTitle": "Fuzzy Autocomplete Missing Client-Side Dependencies Screen",
+		"title": "Fuzzy Autocomplete",
+		"description": "The following client-side dependency isn't installed:",
+		"hint": "Click the button to open its download page.",
+		"quit": "Quit Game"
+	},
 	"yacl3.config.fuzzyautocomplete:config": {
 		"category.settings": "Settings",
 		"category.settings.group.matchedStyle": "Matched Text Style",
