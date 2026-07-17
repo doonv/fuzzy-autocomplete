@@ -1,0 +1,7 @@
+{
+	"yacl3.config.fuzzyautocomplete:config": {
+		"matchedColor": "Colour",
+		"unmatchedSelectedColor": "Colour",
+		"unmatchedUnselectedColor": "Colour"
+	},
+}

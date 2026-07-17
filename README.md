@@ -1,6 +1,6 @@
 # Fuzzy Autocomplete
 
-A simple Minecraft mod that implements [Fuzzy Search](https://en.wikipedia.org/wiki/Approximate_string_matching) into Minecraft's command autocomplete. This allows for much greater efficiency than only being able to search with the beginning of a string. 
+A simple Minecraft mod that implements [Fuzzy Search](https://en.wikipedia.org/wiki/Approximate_string_matching) into Minecraft's command autocomplete. This allows for much greater efficiency than only being able to search with the beginning of a string.
 
 ![For example, the string "wwccst" gets matched into "minecraft:waxed_weathered_cut_copper_stairs".](./img/demo1.webp)
 
@@ -10,10 +10,8 @@ Fuzzy Autocomplete works mostly client-side, however some matching requires Fuzz
 
 ## Supported versions
 
-Currently, the supported versions are: **26.1.x**, **1.21.x**, and **1.20.0-1.20.1**, Fabric only at the moment.
+Currently, the supported versions are: **26.1.x**, **1.21.x**, and **1.20.0-1.20.1**, Fabric/NeoForge.
 I'm open to any version suggestions.
-
-As for other loaders, I might consider support for NeoForge if there's demand for it. For now, try using [Sinytra Connector](https://modrinth.com/project/u58R1TMW) with [Connector Extras](https://modrinth.com/project/FYpiwiBR).
 
 ## Dependencies
 

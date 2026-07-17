@@ -1,53 +1,82 @@
-publish.modrinth="OXXOaUrC"
-publish.curseforge=1578491
+loomx.loom_version="1.16-SNAPSHOT"
+excluded_resources=["assets/icon.kra", "assets/icon-modrinth.png"]
 
 [mod]
-version="1.0.2"
-group="doonv.fuzzy_autocomplete"
-id="fuzzy-autocomplete"
-name="Fuzzy Autocomplete"
+id = "fuzzyautocomplete"
+name = "Fuzzy Autocomplete"
+group = "doonv"
+package = "doonv.fuzzyautocomplete"
+version = "2.0.0"
+description = "Fuzzy autocomplete for command completions."
+authors = ["Doonv"]
+inception_year = "2025"
+license.name = "LGPL-3.0-or-later"
+license.url = "https://opensource.org/licenses/LGPL-3.0-or-later"
+license.dist = "repo"
+sources_url = "https://github.com/doonv/fuzzy-autocomplete"
+homepage_url = "https://modrinth.com/project/OXXOaUrC"
+issues_url = "https://github.com/doonv/fuzzy-autocomplete/issues"
 
-[deps] # Global dependencies
-fabric_loader="0.18.4"
-mixinextras="0.5.3"
+[[mod.pom.developers]]
+id = "doonv"
+name = "Doonv"
+url = "https://github.com/doonv"
 
-["1.20.1"]
-parchment="2023.09.03"
+[fabric]
+deps.fabric-loader = "0.19.3"
 
-mod.mc_dep=">=1.20 <=1.20.1"
-mod.mc_title="1.20-1.20.1"
-mod.mc_targets="1.20 1.20.1"
-
-deps.yacl="3.6.6"
-deps.modmenu="7.2.2"
-
+[fabric."1.20.1"]
+deps.minecraft = "1.20.1"
+deps.mc_dep = ">=1.20 <=1.20.1"
+deps.parchment = "1.20.1:2023.09.03"
+deps.modmenu = "7.2.2"
+deps.yacl = "3.6.6"
+deps.fabric-api = "0.92.9+1.20.1"
+publish.additionalVersions = ["1.20"]
 
 ["1.21.5"]
-parchment="2025.06.15"
+deps.minecraft = "1.21.5"
+deps.parchment = "1.21.5:2025.06.15"
+deps.yacl = "3.8.2"
+publish.additionalVersions = ["1.21", "1.21.1", "1.21.2", "1.21.3", "1.21.4"]
 
-mod.mc_dep=">=1.21 <=1.21.5"
-mod.mc_title="1.21-1.21.5"
-mod.mc_targets="1.21 1.21.1 1.21.2 1.21.3 1.21.4 1.21.5"
+[fabric."1.21.5"]
+deps.mc_dep = ">=1.21 <=1.21.5"
+deps.modmenu = "14.0.2"
+deps.fabric-api = "0.128.2+1.21.5"
 
-deps.yacl="3.8.2"
-deps.modmenu="14.0.2"
-
+[neoforge."1.21.5"]
+deps.mc_dep = "[1.21,1.21.5]"
+deps.neoforge = "21.5.97"
 
 ["1.21.11"]
-parchment="2025.12.20"
+deps.minecraft = "1.21.11"
+deps.yacl = "3.8.2"
+deps.parchment = "1.21.11:2025.12.20"
 
-mod.mc_dep=">=1.21.6 <=1.21.11"
-mod.mc_title="1.21.6-1.21.11"
-mod.mc_targets="1.21.6 1.21.7 1.21.8 1.21.9 1.21.10 1.21.11"
+[fabric."1.21.11"]
+deps.mc_dep = ">=1.21.6 <=1.21.11"
+deps.modmenu = "17.0.0"
+deps.fabric-api = "0.141.4+1.21.11"
+publish.additionalVersions = ["1.21.6", "1.21.7", "1.21.8", "1.21.9", "1.21.10"]
 
-deps.yacl="3.8.2"
-deps.modmenu="17.0.0"
+[neoforge."1.21.11"]
+deps.mc_dep = "[1.21.6,1.21.11]"
+deps.neoforge = "21.11.42"
+publish.additionalVersions = ["1.21.6", "1.21.7", "1.21.8", "1.21.9", "1.21.10"]
 
 
-["26.1"]
-mod.mc_dep=">=26.1"
-mod.mc_title="26.x"
-mod.mc_targets="26.1 26.1.1 26.1.2 26.2"
+["26.1.2"]
+deps.minecraft = "26.1.2"
+deps.yacl = "3.9.4"
+deps.yacl_minecraft_version = "26.1"
+publish.additionalVersions = ["26.1.1", "26.1.2", "26.2"]
 
-deps.yacl="3.9.0"
-deps.modmenu="18.0.0-beta.1"
+[fabric."26.1.2"]
+deps.mc_dep = ">=26.1"
+deps.modmenu = "18.0.0-beta.1"
+deps.fabric-api = "0.145.1+26.1"
+
+[neoforge."26.1.2"]
+deps.mc_dep = "[26.1,)"
+deps.neoforge = "26.1.2.76"

@@ -1,0 +1,14 @@
+{
+	"yacl3.config.fuzzyautocomplete:config": {
+		"category.settings": "Settings",
+		"category.settings.group.matchedStyle": "Matched Text Style",
+		"matchedColor": "Color",
+		"matchedUnderline": "Underlined",
+		"category.settings.group.unmatchedSelectedStyle": "Unmatched Selected Style",
+		"unmatchedSelectedColor": "Color",
+		"unmatchedSelectedUnderline": "Underlined",
+		"category.settings.group.unmatchedUnselectedStyle": "Unmatched Unselected Style",
+		"unmatchedUnselectedColor": "Color",
+		"unmatchedUnselectedUnderline": "Underlined"
+	}
+}
