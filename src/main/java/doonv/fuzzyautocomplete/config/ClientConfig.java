@@ -9,25 +9,11 @@ import dev.isxander.yacl3.config.v2.api.autogen.TickBox;
 import dev.isxander.yacl3.config.v2.api.serializer.GsonConfigSerializerBuilder;
 import doonv.fuzzyautocomplete.FuzzyAutocomplete;
 import net.minecraft.network.chat.Style;
-//? if < 1.21 {
-/*import net.minecraft.resources.ResourceLocation;
- *///?} else if < 1.21.11 {
-/*import net.minecraft.resources.ResourceLocation;
- *///?} else {
 import net.minecraft.resources.Identifier;
-//?}
-
 import java.awt.*;
 
 public class ClientConfig {
-	//? if < 1.21 {
-	/*private static final ResourceLocation CONFIG_ID = new ResourceLocation(FuzzyAutocomplete.MOD_ID, "config");
-	 *///?} else if < 1.21.11 {
-	/*private static final ResourceLocation CONFIG_ID = ResourceLocation.fromNamespaceAndPath(FuzzyAutocomplete.MOD_ID, "config");
-	 *///?} else {
-	private static final Identifier CONFIG_ID = Identifier.fromNamespaceAndPath(FuzzyAutocomplete.MOD_ID, "config");
-	//?}
-
+	private static final Identifier CONFIG_ID = FuzzyAutocomplete.path("config");
 	public static ConfigClassHandler<ClientConfig> HANDLER = ConfigClassHandler.createBuilder(ClientConfig.class)
 			.id(CONFIG_ID)
 			.serializer(config -> GsonConfigSerializerBuilder.create(config)

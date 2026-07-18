@@ -3,12 +3,14 @@ package doonv.fuzzyautocomplete.platform.fabric;
 
 import doonv.fuzzyautocomplete.FuzzyAutocomplete;
 import net.fabricmc.loader.api.FabricLoader;
+import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.screens.ConfirmLinkScreen;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
 //? if >=1.21.11
 import org.jspecify.annotations.NonNull;
 
@@ -51,13 +53,13 @@ public class FabricMissingDepsScreen extends Screen {
 
 		int x = this.width / 2;
 		int y = this.height / 2;
-		graphics.centeredText(this.font, translation("title"), this.width / 2, y - 60, 0xFFFFFFFF);
+		graphics.centeredText(this.font, translation("title").withStyle(ChatFormatting.BOLD), this.width / 2, y - 60, 0xFFFFFFFF);
 		graphics.centeredText(this.font, translation("description"), x, y - 30, 0xFFFFFFFF);
 		graphics.centeredText(this.font, translation("hint"), x, y - 10, 0xAAFFFFFF);
 	}
 	//~ }
 
-	private static Component translation(String key) {
+	private static MutableComponent translation(String key) {
 		return Component.translatable(FuzzyAutocomplete.MOD_ID + ".missingDeps." + key);
 	}
 }

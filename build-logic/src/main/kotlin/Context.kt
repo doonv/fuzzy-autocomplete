@@ -52,8 +52,9 @@ class Context(
 	val isSnapshot: Boolean by lazy { !project.envTrue("MOD_IS_RELEASE") }
 	val baseVersion: String by lazy { "$modVersion$channelTag" }
 	val snapshotSuffix: String by lazy { if (isSnapshot) "-SNAPSHOT" else "" }
-	val fullVersion: String by lazy { "$baseVersion-${loader.id}+$currentMcVersion$snapshotSuffix" }
+	val versionRange: String by lazy { require("publish.versionRange") }
 	val basicVersion: String by lazy { "$baseVersion$snapshotSuffix" }
+	val fullVersion: String by lazy { "$basicVersion+${versionRange}-${loader.id}" }
 
 	val excludedResources: List<String> by lazy {
 		project.sc.properties.rawOrNull("excluded_resources")?.to<List<String>>().orEmpty()

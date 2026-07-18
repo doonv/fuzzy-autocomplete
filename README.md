@@ -10,7 +10,7 @@ Fuzzy Autocomplete works mostly client-side, however some matching requires Fuzz
 
 ## Supported versions
 
-Currently, the supported versions are: **26.1.x**, **1.21.x**, and **1.20.0-1.20.1**, Fabric/NeoForge.
+Currently, the supported versions are: **26.x**, **1.21.x**, and **1.20.0-1.20.1**, Fabric/NeoForge.
 I'm open to any version suggestions.
 
 ## Dependencies

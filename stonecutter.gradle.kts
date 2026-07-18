@@ -41,6 +41,14 @@ stonecutter parameters {
 	swaps["minecraft"] = "\"${current.version}\";"
 
 	replacements {
+		string(current.parsed < "1.21") {
+			replace("ResourceLocation.fromNamespaceAndPath", "new ResourceLocation")
+		}
+		string(current.parsed >= "1.21.11") {
+			replace("ResourceLocation", "Identifier")
+			// This is needed because of https://stonecutter.kikugie.dev/wiki/config/params#replacement-overlapping
+			replace("ResourceLocation.fromNamespaceAndPath", "Identifier.fromNamespaceAndPath")
+		}
 		string(current.parsed >= "26.1") {
 			replace("GuiGraphics", "GuiGraphicsExtractor")
 		}

@@ -21,9 +21,9 @@ platform {
 		}
 		required("yet_another_config_lib_v3") {
 			slug("yacl")
+			environment = "client"
 			fabricLikeVersionRange = "^${prop("deps.yacl")}"
 		}
-		optional("modmenu") {}
 	}
 }
 

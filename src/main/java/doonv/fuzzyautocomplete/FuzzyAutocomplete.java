@@ -1,6 +1,7 @@
 package doonv.fuzzyautocomplete;
 
 import doonv.fuzzyautocomplete.platform.Platform;
+import net.minecraft.resources.Identifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -28,5 +29,9 @@ public class FuzzyAutocomplete {
 
 	public static void onInitializeClient() {
 		doonv.fuzzyautocomplete.config.ClientConfig.HANDLER.load();
+	}
+
+	public static Identifier path(String path) {
+		return Identifier.fromNamespaceAndPath(MOD_ID, path);
 	}
 }

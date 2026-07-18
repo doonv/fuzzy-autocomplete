@@ -31,7 +31,7 @@ sealed class Loader(val id: String) {
 			val manifest = FabricManifest(
 				id = ctx.modId,
 				name = ctx.modName,
-				version = ctx.baseVersion,
+				version = ctx.fullVersion,
 				authors = ctx.authors,
 				contributors = ctx.contributors,
 				contact = mapOf(
@@ -57,8 +57,18 @@ sealed class Loader(val id: String) {
 					// "fabric-datagen" to listOf("${ctx.modGroup}.${ctx.modId}.platform.fabric.datagen.FabricDataGeneratorEntrypoint")
 				),
 				mixins = listOf("${ctx.modId}.mixins.json"),
-				depends = ctx.extension.dependencies.required.associate { it.modid.get() to it.fabricLikeVersionRange.get() },
-				recommends = ctx.extension.dependencies.optional.associate { it.modid.get() to it.fabricLikeVersionRange.get() },
+				depends = ctx.extension.dependencies.required.filterNot {
+					it.environment.orNull.equals(
+						"client",
+						ignoreCase = true
+					)
+				}.associate { it.modid.get() to it.fabricLikeVersionRange.get() },
+				recommends = (ctx.extension.dependencies.optional + ctx.extension.dependencies.required.filter {
+					it.environment.orNull.equals(
+						"client",
+						ignoreCase = true
+					)
+				}).associate { it.modid.get() to it.fabricLikeVersionRange.get() },
 				breaks = ctx.extension.dependencies.incompatible.associate { it.modid.get() to it.fabricLikeVersionRange.get() },
 				provides = ctx.extension.dependencies.embeds.map { it.modid.get() }
 			)
