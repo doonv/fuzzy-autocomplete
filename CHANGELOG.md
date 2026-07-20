@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- NeoForge support.
+
+### Changed
+
+- **Breaking:** mod ID changed from `fuzzy_autocomplete` to `fuzzyautocomplete`.
+- Switch to [rotgruengelb's template](https://github.com/rotgruengelb/stonecutter-mod-template) to allow for NeoForge support.
+
 ## [1.0.2] - 2026-06-17
 
 ### Fixed

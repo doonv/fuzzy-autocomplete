@@ -34,7 +34,7 @@ public abstract class SuggestionsListMixin implements FuzzyPatternHolder {
 	//~ if >=1.21.6 'III)I"' -> 'III)V"', 'private int' -> 'private void', 'Operation<Integer>' -> 'Operation<Void>', 'return' -> '/*return*/' {
 	//~ if >=26.1 'render' -> 'extractRenderState', 'drawString' -> 'text', 'instance' -> 'graphics' {
 	@WrapOperation(method = "extractRenderState", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/GuiGraphicsExtractor;text(Lnet/minecraft/client/gui/Font;Ljava/lang/String;III)V"))
-	private void onDrawString(GuiGraphicsExtractor graphics, Font font, String text, int x, int y, int color, Operation<Void> original) {
+	private void drawMatchedIndices(GuiGraphicsExtractor graphics, Font font, String text, int x, int y, int color, Operation<Void> original) {
 		boolean isSelected = (color == SELECTED_COLOR);
 
 		/*return*/ graphics.text(font, FuzzyHighlighter.highlightMatch(this.fuzzyautocomplete$pattern, text, isSelected), x, y, -1);
