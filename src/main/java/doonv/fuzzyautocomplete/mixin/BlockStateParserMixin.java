@@ -1,0 +1,27 @@
+package doonv.fuzzyautocomplete.mixin;
+
+import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
+import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
+import dev.kikugie.fletching_table.annotation.MixinEnvironment;
+import doonv.fuzzyautocomplete.FuzzyMatcher;
+import net.minecraft.commands.arguments.blocks.BlockStateParser;
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.injection.At;
+
+@MixinEnvironment(type = MixinEnvironment.Env.MAIN)
+@Mixin(BlockStateParser.class)
+public class BlockStateParserMixin {
+
+	/// Intercepts the strict \`.startsWith()\` checks when suggesting block properties
+	/// (e.g., facing, waterlogged, half) to allow fuzzy matching.
+	@WrapOperation(
+			method = {
+					"suggestPropertyName",
+					"suggestVaguePropertyName"
+			},
+			at = @At(value = "INVOKE", target = "Ljava/lang/String;startsWith(Ljava/lang/String;)Z")
+	)
+	private boolean onBlockStateStartsWith(String instance, String prefix, Operation<Boolean> original) {
+		return FuzzyMatcher.isFuzzyMatch(prefix, instance);
+	}
+}

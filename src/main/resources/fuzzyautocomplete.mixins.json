@@ -1,0 +1,7 @@
+{
+  "package": "doonv.fuzzyautocomplete.mixin",
+  "compatibilityLevel": "${java}",
+  "plugin": "doonv.fuzzyautocomplete.mixin.FuzzyAutocompleteMixinPlugin",
+  "mixins": [],
+  "client": []
+}
